@@ -22,6 +22,7 @@ func TestMainHandlerWhenCountMoreThanTotal(t *testing.T) {
 	body := responseRecorder.Body.String()
 	list := strings.Split(body, ",")
 
+	require.NotNil(t, responseRecorder.Body)
 	require.Equal(t, status, http.StatusOK)
 	assert.Equal(t, len(list), totalCount)
 }
@@ -36,6 +37,7 @@ func TestMainHandlerWhenOk(t *testing.T) {
 	status := responseRecorder.Code
 	body := responseRecorder.Body.String()
 
+	require.NotNil(t, responseRecorder.Body)
 	require.Equal(t, status, http.StatusOK)
 	assert.NotEmpty(t, body)
 }
@@ -50,6 +52,7 @@ func TestMainHandlerWhenCityIsWrong(t *testing.T) {
 	status := responseRecorder.Code
 	body := responseRecorder.Body.String()
 
+	require.NotNil(t, responseRecorder.Body)
 	require.Equal(t, status, http.StatusBadRequest)
 	assert.Equal(t, "wrong city value", body)
 }
